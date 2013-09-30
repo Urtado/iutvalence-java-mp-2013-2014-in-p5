@@ -8,7 +8,8 @@ MOTUS:
 
 Classique
 
-Choix difficulté avec la taille du mot entre 6 et 8 lettres
+
+la taille du mot 6 lettres.
 première lettre donnée, si mot supérieur au nombre de lettre tour perdu, de même si mot inférieur au nombre de lettre du mot aléatoire, (et si le mot ne veux rien dire)
 Si le mot donnée correspond, le joueur gagne, et le mot est afficher en rouge, si le mot donnée contient des lettres bien placé, elles s'affichent en rouge, si elle sont présentes dans le mots, mais pas au bon endroit, alors elles s'affichent en jaune et si elle ne sont pas dant le mot, elles s'affichent en bleu, on a 6 tours pour trouver le mot correspondant.
 Trente secondes pour proposer un mot, au bout des trentes secondes, tu perds la main

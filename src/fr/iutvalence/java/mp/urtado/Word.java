@@ -23,17 +23,15 @@ public class Word
      * the action of founding the word
      * with a keyboard input
      */
-    public void getWord()
-    {
-    }
-    
+
     /**
      * Constructor 
      */
     public Word()
     {
-        this.numberTry = 1;
+        this.numberTry = 6;
         this.point =10;
+        this.sixLetterWord = null;
         
     }
     

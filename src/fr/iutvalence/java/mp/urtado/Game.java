@@ -9,6 +9,14 @@ package fr.iutvalence.java.mp.urtado;
 public class Game
 {
     /**
+     * tryNumber is the number of try left
+     */
+    public int tryNumber;
+    /**
+     * player is the pseudo of the player
+     */
+    public Player player;
+    /**
      * playerNumber is the number of player in the game (1 or 2)
      */
     public int playerNumber;
@@ -28,40 +36,67 @@ public class Game
     /**
      * Action of starting the game
      */
-    public void startGame()
+    private void startGame()
     {
-        //new Player(this.pseudo, this.playerNumber);
+
     }
     
     /**
      * Action of ending the game
      */
-    public void endGame()
+    private void endGame()
     {
        
     }
     
     /**
-     * Start a new turn and if the value of turn is equal at 8 then finish the game 
+     * Start a new turn and if the value of turn is above 8 then finish the game 
      */
-    public void newTurn()
+    private void newTurn()
     {
-     if (this.turn >= 8)
+     this.tryNumber = 6;
+     if (this.finalScore == 60 )
          endGame();
      else    
          new Word();
-         this.turn = this.turn +1;
+         
+    }
+    
+    /**
+     * Start a new try and if the value of try is above 6 then start a new word
+     */
+    private void newTry()
+    { 
+      Player.getWord();
+      // compare to the sixLetterWord
+      Player.showWord();
+      this.tryNumber = this.tryNumber - 1; 
+      
     }
    
     /**
-     * Game constructor with the number of player in parameter
-     * @param i is the entry of the number of player 
+     * Game constructor with the player in parameter
+     * @param player2 is player of the game
      */    
-    public Game(int i)
-    {    
+    public Game(Player player2)
+    {
     this.finalScore = 0;
-    this.turn = 0;
-    this.playerNumber = i;
+    this.turn = 6;
+    this.playerNumber = 1;
+    this.player = player2;
+    this.tryNumber = 6;
+    }
+
+    /**
+     * Algorithm of the game
+     */
+    public void play()
+    {
+        startGame();
+        while (this.finalScore != 60)
+            newTurn();
+            while (this.tryNumber != 0)
+                newTry();
     }
    
 }

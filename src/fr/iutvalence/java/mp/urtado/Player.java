@@ -24,15 +24,29 @@ public class Player
      */
     public int numberPlayer;
     /**
+     * getWord get the proposition of the player
+     */
+    static public void getWord()
+    {
+       
+        
+    }
+    
+    /**
+     * showResult show the proposition after the
+     */
+    static public void showWord()
+    {
+     
+    }
+    /**
      * Constructor of player
-     * @param p String for the pseudo of the player
-     * @param i int that shows the number of the player
      */
     
-    public Player(String p, int i)
-    {
+    public Player()
+    {String p = "Joueur 1";
         this.pseudo = p;
-        this.numberPlayer = i;
+        this.numberPlayer = 1;
         this.playerScore = 0;
     }
 }

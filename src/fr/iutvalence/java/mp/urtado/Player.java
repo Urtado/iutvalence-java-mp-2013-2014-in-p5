@@ -20,29 +20,32 @@ public class Player
     public String pseudo;
     
     /**
-     * numberPlayer is an int that shows the number  of the player
+     * numberPlayer is an integer that shows the number  of the player
      */
     public int numberPlayer;
     /**
      * getWord get the proposition of the player
+     * @return Res is the proposition of the player
      */
-    static public void getWord()
+    public String getWord()
     {
-       
-        
+       String res = "";
+       return res; 
     }
     
     /**
      * showResult show the proposition after the
      */
-    static public void showWord()
+    public void showWord(Result)
     {
      
     }
+
+
+        
     /**
      * Constructor of player
      */
-    
     public Player()
     {String p = "Joueur 1";
         this.pseudo = p;

@@ -6,10 +6,7 @@ package fr.iutvalence.java.mp.urtado;
  */
 public class Word
 {
-    /** 
-     * numberTry is the number of try left to found the word
-     */
-    public int numberTry;
+
     /** 
      * Point is the number of point earned in founding the word
      */
@@ -29,7 +26,6 @@ public class Word
      */
     public Word()
     {
-        this.numberTry = 6;
         this.point =10;
         this.sixLetterWord = null;
         

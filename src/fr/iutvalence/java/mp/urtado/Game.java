@@ -68,10 +68,45 @@ public class Game
     private void newTry()
     { 
       Player.getWord();
-      // compare to the sixLetterWord
+      compareWord(Player.getWord(), word);
       Player.showWord();
       this.tryNumber = this.tryNumber - 1; 
       
+    }
+    /**
+     * compare the answer with the word to find.
+     * @param res the result of the function getWord
+     * @param word the word the player have to find
+    */
+    public Result compareWord(String res, String word)
+    {
+        int[] placement = new int[5];
+        char[] resArray  = res.toLowerCase().toCharArray();
+        char[] wordArray = word.toLowerCase().toCharArray();
+        int i;
+        int j;
+        Result arrayPlacement;
+        if(res.length() != 6)
+            this.tryNumber = this.tryNumber -1;
+            return null;
+        else 
+            {
+        for(i=0; i < 6; i++)
+        {
+            for(j=0; j<6; j++)
+            {
+                if(resArray[j] != wordArray[i])
+                    placement[i] = Result.WRONG_LETTER;
+                if(resArray[j] == wordArray[i] && i == j)
+                    placement[i] = Result.GOOD_LETTER;
+                if(resArray[j] == wordArray[i] && i != j)
+                    placement[i] = Result.WRONG_PLACE_LETTER;                 
+            }
+        }
+
+        arrayPlacement = new Result(res, placement);
+        return arrayPlacement;
+         }
     }
    
     /**
@@ -86,6 +121,7 @@ public class Game
     this.player = player2;
     this.tryNumber = 6;
     }
+    
 
     /**
      * Algorithm of the game

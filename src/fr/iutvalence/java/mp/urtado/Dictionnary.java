@@ -11,7 +11,7 @@ public class Dictionnary
      * 
      * dictionnary is an array where all the sixLetterWord are stocked
      */
-    public String dictionnary[];
+    public String[] dictionnary;
 
 
     /**

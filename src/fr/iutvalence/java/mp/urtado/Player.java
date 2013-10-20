@@ -13,16 +13,21 @@ public class Player
     /**
      * score of the player
      */
+    // TODO (fix) field should be declared as private
     public int playerScore;
+
     /**
      * pseudo is the pseudo of the player
      */
+    // TODO (fix) field should be declared as private
     public String pseudo;
     
     /**
      * numberPlayer is an integer that shows the number  of the player
      */
+    // TODO (fix) field should be declared as private
     public int numberPlayer;
+    
     /**
      * getWord get the proposition of the player
      * @return Res is the proposition of the player
@@ -42,7 +47,7 @@ public class Player
     }
 
 
-        
+    // TODO (fix) declare constructors after fields and before methods·        
     /**
      * Constructor of player
      */

@@ -10,11 +10,11 @@ public class Word
     /** 
      * Point is the number of point earned in founding the word
      */
-    public int point;
+    public int score;
     /**
      * sixLetterWord is the word that the player have to found
      */
-    public String sixLetterWord;
+    public String sixLettersWord;
   
     /**
      * the action of founding the word
@@ -26,16 +26,9 @@ public class Word
      */
     public Word()
     {
-        this.point =10;
-        this.sixLetterWord = null;
+        this.score =10;
+        this.sixLettersWord = null;
         
     }
-    
-        
-    
-    
-    
-       
-        
-    
+ 
 }

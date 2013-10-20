@@ -1,6 +1,5 @@
 package fr.iutvalence.java.mp.urtado;
 
-import java.lang.reflect.Array;
 
 /**
  * @author urtadob

@@ -61,7 +61,10 @@ public class Result
         return this.lettersPlacement;
     }
  
-    
+    public String toString()
+    {
+       return (getWord() 
+    }
 }
 
 

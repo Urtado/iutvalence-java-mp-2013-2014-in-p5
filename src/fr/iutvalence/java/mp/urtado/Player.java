@@ -13,21 +13,32 @@ public class Player
     /**
      * score of the player
      */
-    // TODO (fix) field should be declared as private
-    public int playerScore;
+  
+    private int playerScore;
 
     /**
      * pseudo is the pseudo of the player
      */
-    // TODO (fix) field should be declared as private
-    public String pseudo;
+  
+    private String pseudo;
     
     /**
      * numberPlayer is an integer that shows the number  of the player
      */
-    // TODO (fix) field should be declared as private
-    public int numberPlayer;
+
+    private int numberPlayer;
+    /**
+     * Constructor of player
+     */
     
+    public Player()
+    {
+        String p = "Joueur 1";
+        this.pseudo = p;
+        this.numberPlayer = 1;
+        this.playerScore = 0;
+    }
+     
     /**
      * getWord get the proposition of the player
      * @return Res is the proposition of the player
@@ -37,26 +48,19 @@ public class Player
        String res = "";
        return res; 
     }
+
     
     /**
      * showResult show the proposition after the
+     * @param word the result we show to the player
+     * 
      */
-    public void showWord(Result)
+    public void showWord(Result word)
     {
-     
-    }
-
-
-    // TODO (fix) declare constructors after fields and before methods·        
-    /**
-     * Constructor of player
-     */
-    public Player()
-    {String p = "Joueur 1";
-        this.pseudo = p;
-        this.numberPlayer = 1;
-        this.playerScore = 0;
+        
     }
 }
 
+
+    
     

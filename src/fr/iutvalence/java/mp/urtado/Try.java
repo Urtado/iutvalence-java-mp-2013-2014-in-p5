@@ -5,10 +5,14 @@ package fr.iutvalence.java.mp.urtado;
  *
  */
 public class Try
-{
+{  
 
-    /**
-     * time is the time left before the end of the try
-     */
-    public int time;
+/**
+ * 
+ */
+
+
+
+
+
 }

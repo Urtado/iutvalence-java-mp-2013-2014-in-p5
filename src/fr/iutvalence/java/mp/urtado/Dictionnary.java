@@ -12,13 +12,19 @@ public class Dictionnary
      * dictionnary is an array where all the sixLetterWord are stocked
      */
     public String[] dictionnary;
-
+    /**
+     * numberWord is the counter of the number of word in the dictionnary 
+     */
+    public int numberWord;
 
     /**
      * Possibility of adding a word
+     * @param word is the word we want to add
      */
-    public void addWord()
+    public void addWord(String word)
     {
+        this.dictionnary[this.numberWord] = word;
+        this.numberWord = this.numberWord +1; 
     }
 
     /**
@@ -26,10 +32,15 @@ public class Dictionnary
      */
     public void deleteWord()
     {
+        
     }
 
-    public dictionnary()
+    /**
+     * 
+     */
+    public Dictionnary()
     {
+        this.numberWord = 0;
     }
     
 }

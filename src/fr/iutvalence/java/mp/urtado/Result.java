@@ -1,9 +1,7 @@
 package fr.iutvalence.java.mp.urtado;
 
-
 /**
- * @author urtadob
- * The object that the users get after he did a try.
+ * @author urtadob The object that the users get after he did a try.
  */
 public class Result
 {
@@ -15,35 +13,42 @@ public class Result
     /**
      * GOOD_LETTER tells the player if the letter is well-placed in the word
      */
-    public static final int GOOD_LETTER = 1;    
+    public static final int GOOD_LETTER = 1;
+    
     /**
-     * wrongPlaceLetter tells the player if the letter is in the word but a the wrong place
+     * wrongPlaceLetter tells the player if the letter is in the word but a the
+     * wrong place
      */
-    public static final int WRONG_PLACE_LETTER = 2;
+    public static final int MISPLACED_LETTER = 2;
+    
     /**
-     * result is the word that is send back to the player
+     * word that is sent back to the player
      */
-    private final String word; 
+    private final String word;
+    
     /**
-     * resultArray is the array which tells if the letter are well placed, wrong, or in the word
+     * array which tells if the letter are well placed,
+     * misplaced, or not in the word
      */
     private final int[] lettersPlacement;
-    
-    
+
     /**
      * Constructor of result
-     * @param placement proposition of the player
-     * @param w word
+     * 
+     * @param placement
+     *            proposition of the player
+     * @param word
+     *            word
      */
-    public Result(String w, int[] placement )
+    public Result(String word, int[] placement)
     {
-        this.word = w;
+        this.word = word;
         this.lettersPlacement = placement;
     }
 
-
     /**
      * getWord allows the see the word
+     * 
      * @return the word in the Result
      */
     public String getWord()
@@ -51,20 +56,18 @@ public class Result
         return this.word;
     }
 
-
     /**
      * getLettersPlacement allows to see the array
+     * 
      * @return the placement of the letters
      */
     public int[] getLettersPlacement()
     {
         return this.lettersPlacement;
     }
- 
+
     public String toString()
     {
-       return (getWord() 
+       return "to be completed";
     }
 }
-
-

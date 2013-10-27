@@ -1,60 +1,61 @@
 package fr.iutvalence.java.mp.urtado;
 
-
 /**
- * @urtadob
- * The class that show the process of a game
+ * @urtadob The class that show the process of a game
  */
 
 // TODO (fix) this class should only have one public method called "play"
 public class Game
 {
+    
+    // TODO (think about it) you have to distinguish local variables from fields.
+    // some of the following declarations are much more local variable than part of game state
     /**
-     * tryNumber is the number of try left
+     * number of tries left
      */
-    private int tryNumber;
-
+    private int numberOfTriesLeft;
 
     /**
-     * player is the pseudo of the player
+     * player
      */
     private Player player;
 
     /**
-     * playerNumber is the number of player in the game (1 or 2)
+     * number of player in the game (1 or 2)
      */
     private int playerNumber;
 
     /**
-     * Word is word that the player have to found
+     * word that the player have to find
      */
     private Word word;
 
     /**
-     * Turn is the number who represent the number of word already played
+     * the number of words already played
      */
-    private int turn;
+    private int wordsAlreadyPlayed;
 
     /**
-     * FinalScore is the score at the end of the game
+     * score at the end of the game
      */
     public int finalScore;
+
     /**
      * Game constructor with the player in parameter
      * 
-     * @param player2
+     * @param player
      *            is player of the game
      */
-    
-    public Game(Player player2)
-    {
-        this.finalScore = 0;
-        this.turn = 6;
-        this.playerNumber = 1;
-        this.player = player2;
-        this.tryNumber = 6;
-    }
 
+    public Game(Player player)
+    {
+        // TODO (fix) declare hard-coded values as constants
+        this.finalScore = 0;
+        this.wordsAlreadyPlayed = 6;
+        this.playerNumber = 1;
+        this.player = player;
+        this.numberOfTriesLeft = 6;
+    }
 
     /**
      * Start a new try and if the value of try is above 6 then start a new word
@@ -62,10 +63,9 @@ public class Game
     private void newTry()
     {
         this.player.showWord(compareWord(this.player.getWord(), this.word.sixLettersWord));
-        this.tryNumber = this.tryNumber - 1;
+        this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
 
     }
-
 
     /**
      * compare the answer with the word to find.
@@ -76,72 +76,72 @@ public class Game
      *            the word the player have to find
      * @return null says if the result is correct or not
      */
+    // TODO (fix) simplify this method, it is not really readable
     private Result compareWord(String res, String word)
     {
         int[] placement = new int[5];
-        char[] resArray  = res.toLowerCase().toCharArray();
+        char[] resArray = res.toLowerCase().toCharArray();
         char[] wordArray = word.toLowerCase().toCharArray();
         int i = 0;
         int j = 0;
         Result arrayPlacement;
-        if(res.length() != 6)
-            {
-            this.tryNumber = this.tryNumber -1;
-            return null;
-            }
-        
-        else 
-        while(resArray[i] == wordArray[j] && i != 6)
+        if (res.length() != 6)
         {
-           i++;
-           j++;
+            this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
+            return null;
         }
-        if(i == 6)
+
+        else
+            while (resArray[i] == wordArray[j] && i != 6)
+            {
+                i++;
+                j++;
+            }
+        if (i == 6)
         {
             this.finalScore = this.finalScore + this.word.score;
-            for(i=0; i < 6; i++)
+            for (i = 0; i < 6; i++)
                 placement[i] = Result.GOOD_LETTER;
             arrayPlacement = new Result(res, placement);
-            this.tryNumber = 0;
+            this.numberOfTriesLeft = 0;
             return arrayPlacement;
         }
         else
         {
-        for(i=0; i < 6; i++)
-        {
-            for(j=0; j<6; j++)
+            for (i = 0; i < 6; i++)
             {
-                if(resArray[j] != wordArray[i])
-                    placement[i] = Result.WRONG_LETTER;
-                if(resArray[j] == wordArray[i] && i == j)
-                    placement[i] = Result.GOOD_LETTER;
-                if(resArray[j] == wordArray[i] && i != j)
-                    placement[i] = Result.WRONG_PLACE_LETTER;                 
+                for (j = 0; j < 6; j++)
+                {
+                    if (resArray[j] != wordArray[i])
+                        placement[i] = Result.WRONG_LETTER;
+                    if (resArray[j] == wordArray[i] && i == j)
+                        placement[i] = Result.GOOD_LETTER;
+                    if (resArray[j] == wordArray[i] && i != j)
+                        placement[i] = Result.MISPLACED_LETTER;
+                }
             }
-        }
 
-        arrayPlacement = new Result(res, placement);
-        return arrayPlacement;
+            arrayPlacement = new Result(res, placement);
+            return arrayPlacement;
         }
     }
-
-   
-
 
     /**
      * Algorithm of the game
      */
     public void play()
-    { 
+    {
+        // TODO (fix) declare hard-coded values as constants
         while (this.finalScore != 60)
         {
-           this.word = new Word();
-           this.turn = this.turn -1;
+            this.word = new Word();
+            this.wordsAlreadyPlayed = this.wordsAlreadyPlayed - 1;
         }
-        
-        while (this.tryNumber != 0)
+
+        while (this.numberOfTriesLeft != 0)
             newTry();
-        
+
+        // TODO (fix) go on with game algorithm
     }
 
 }

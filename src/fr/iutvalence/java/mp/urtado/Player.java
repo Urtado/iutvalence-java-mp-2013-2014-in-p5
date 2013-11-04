@@ -1,24 +1,17 @@
 package fr.iutvalence.java.mp.urtado;
 
+import java.io.*;
+
 /**
  * Joueur
  * 
- * @urtadob Défini par un pseudo Défini par un numéro de joueur
+ * @urtadob 
  * 
  */
 
 public class Player
 {
 
-    /**
-     * score of the player
-     */
-
-    private int playerScore;
-
-    /**
-     * pseudo is the pseudo of the player
-     */
 
     private String pseudo;
 
@@ -36,8 +29,7 @@ public class Player
     {
         String p = "Joueur 1";
         this.pseudo = p;
-        this.numberPlayer = 1;
-        this.playerScore = 0;
+        this.numberPlayer = 1;;
     }
 
     /**
@@ -47,19 +39,54 @@ public class Player
      */
     public String getWord()
     {
-        String res = "";
-        return res;
+
+        InputStreamReader isr=null;
+        try
+        {
+            isr = new InputStreamReader(System.in, "US-ASCII");
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            return null;
+        }
+        BufferedReader br = new BufferedReader(isr);
+        String res = null;
+        
+        
+        try
+        {
+          return br.readLine();
+        }
+        catch (IOException e)
+        {
+           return null;
+        }
+
+        finally
+        {
+            try
+            {
+                isr.close();
+                br.close();
+            }
+            catch (IOException e)
+            {
+            }
+       
+        }
     }
+        
+      
 
     /**
      * showResult show the proposition after the
      * 
      * @param word
      *            the result we show to the player
-     * 
      */
     public void showWord(Result word)
     {
-
+        String NewLigne=System.getProperty("line.separator"); 
+        System.out.println("Proposition:"+word.getWord()+NewLigne+"Resultat:"+word.getLettersPlacement()+NewLigne+"Légende : 0 Lettre pas présente, 1 Lettre bien placé, 2 Lettre mal placé");
     }
 }

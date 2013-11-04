@@ -50,7 +50,6 @@ public class Player
             return null;
         }
         BufferedReader br = new BufferedReader(isr);
-        String res = null;
         
         
         try

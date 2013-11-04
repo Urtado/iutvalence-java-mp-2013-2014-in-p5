@@ -7,9 +7,24 @@ package fr.iutvalence.java.mp.urtado;
 // TODO (fix) this class should only have one public method called "play"
 public class Game
 {
-    
     // TODO (think about it) you have to distinguish local variables from fields.
     // some of the following declarations are much more local variable than part of game state
+    /**
+     * pointEarned is the number of point a word is worth
+     */
+    private final static int pointEarned = 10;
+    /**
+     * winningScore is the score that the player have to reach to win the game
+     */
+    private final static int winningScore = 60;
+    /**
+     * normalWordLength is the length an answer give by the player should be
+     */
+    private final static int normalWordLength = 6;
+    /**
+     * Constants of the number of try.
+     */
+    private final static int numberTryStart = 6 ;
     /**
      * number of tries left
      */
@@ -49,12 +64,11 @@ public class Game
 
     public Game(Player player)
     {
-        // TODO (fix) declare hard-coded values as constants
         this.finalScore = 0;
-        this.wordsAlreadyPlayed = 6;
+        this.wordsAlreadyPlayed = 0;
         this.playerNumber = 1;
         this.player = player;
-        this.numberOfTriesLeft = 6;
+        this.numberOfTriesLeft = numberTryStart;
     }
 
     /**
@@ -85,32 +99,43 @@ public class Game
         int i = 0;
         int j = 0;
         Result arrayPlacement;
-        if (res.length() != 6)
+       
+        
+        // test if the length of the word is correct
+        if (res.length() != normalWordLength)
         {
-            this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
             return null;
         }
 
         else
-            while (resArray[i] == wordArray[j] && i != 6)
+            
+            
+            // If the length is correct, we look if the word is the same as the proposition
+            while (resArray[i] == wordArray[j] && i != 5)
             {
                 i++;
                 j++;
             }
-        if (i == 6)
+        
+        
+        // If the word is the same, we update the final score, and put the number of try at 0, and return the result
+        if (i == 5)
         {
-            this.finalScore = this.finalScore + this.word.score;
-            for (i = 0; i < 6; i++)
+            this.finalScore = this.finalScore + pointEarned;
+            for (i = 0; i < 5; i++)
                 placement[i] = Result.GOOD_LETTER;
             arrayPlacement = new Result(res, placement);
             this.numberOfTriesLeft = 0;
             return arrayPlacement;
         }
+        
+        
+        // If the word isn't the same, we look character by character to fill the placement array, and then return it.
         else
         {
-            for (i = 0; i < 6; i++)
+            for (i = 0; i < 5; i++)
             {
-                for (j = 0; j < 6; j++)
+                for (j = 0; j < 5; j++)
                 {
                     if (resArray[j] != wordArray[i])
                         placement[i] = Result.WRONG_LETTER;
@@ -131,17 +156,17 @@ public class Game
      */
     public void play()
     {
-        // TODO (fix) declare hard-coded values as constants
-        while (this.finalScore != 60)
+        Dictionnary dico = null;
+        dico = new Dictionnary();
+        while (this.finalScore != winningScore)
         {
-            this.word = new Word();
-            this.wordsAlreadyPlayed = this.wordsAlreadyPlayed - 1;
+            this.word = new Word(dico.getWord());
+            this.wordsAlreadyPlayed = this.wordsAlreadyPlayed + 1;
+            this.numberOfTriesLeft = numberTryStart;
+            while (this.numberOfTriesLeft > 0)
+                newTry();
         }
-
-        while (this.numberOfTriesLeft != 0)
-            newTry();
-
-        // TODO (fix) go on with game algorithm
+        System.out.println("Bravo vous avez réussi en "+this.wordsAlreadyPlayed+"mots!");
     }
 
 }

@@ -1,9 +1,16 @@
 package fr.iutvalence.java.mp.urtado;
 
-// TODO (fix) write comment
+/**
+ * @author urtadob
+ * class that run the game.
+ */
 public class Main
 {
-    // TODO (fix) write comment
+    /**
+     * @param args
+     * methods that call the game algorithm in the class game.
+     */
+    
     public static void main(String[] args)
     {
         new Game(new Player()).play();

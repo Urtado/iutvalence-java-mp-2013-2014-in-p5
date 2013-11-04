@@ -8,26 +8,20 @@ package fr.iutvalence.java.mp.urtado;
 public class Word
 {
 
-    /**
-     * Point is the number of point earned in founding the word
-     */
-    public int score;
+      
+
     /**
      * sixLetterWord is the word that the player have to found
      */
     public String sixLettersWord;
 
     /**
-     * the action of founding the word with a keyboard input
-     */
-
-    /**
      * Constructor
+     * @param word is the word we get from the dictionnary
      */
-    public Word()
+    public Word(String word)
     {
-        this.score = 10;
-        this.sixLettersWord = null;
+        this.sixLettersWord = word;
 
     }
 

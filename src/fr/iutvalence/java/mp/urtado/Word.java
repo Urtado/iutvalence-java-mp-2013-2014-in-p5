@@ -1,5 +1,6 @@
 package fr.iutvalence.java.mp.urtado;
 
+// TODO (fix) write comment
 /**
  * 
  * @author urtadob
@@ -7,12 +8,10 @@ package fr.iutvalence.java.mp.urtado;
  */
 public class Word
 {
-
-      
-
     /**
      * sixLetterWord is the word that the player have to found
      */
+    // TODO (fix) this field should be private
     public String sixLettersWord;
 
     /**

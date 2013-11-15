@@ -7,34 +7,46 @@ package fr.iutvalence.java.mp.urtado;
 // TODO (fix) this class should only have one public method called "play"
 public class Game
 {
-    // TODO (think about it) you have to distinguish local variables from fields.
-    // some of the following declarations are much more local variable than part of game state
+    // TODO (think about it) you have to distinguish local variables from
+    // fields.
+    // some of the following declarations are much more local variable than part
+    // of game state
     /**
      * pointEarned is the number of point a word is worth
      */
+    // TODO (fix) comply with naming conventions
     private final static int pointEarned = 10;
+
     /**
      * winningScore is the score that the player have to reach to win the game
      */
+    // TODO (fix) comply with naming conventions
     private final static int winningScore = 60;
+
     /**
      * normalWordLength is the length an answer give by the player should be
      */
+    // TODO (fix) comply with naming conventions
     private final static int normalWordLength = 6;
+
     /**
      * Constants of the number of try.
      */
-    private final static int numberTryStart = 6 ;
+    // TODO (fix) comply with naming conventions
+    private final static int numberTryStart = 6;
+
     /**
      * number of tries left
      */
     private int numberOfTriesLeft;
 
+    // TODO (fix) this field suggest that you have only one player
     /**
      * player
      */
     private Player player;
 
+    // TODO (fix) this field suggest that you have one or more than one player
     /**
      * number of player in the game (1 or 2)
      */
@@ -99,26 +111,26 @@ public class Game
         int i = 0;
         int j = 0;
         Result arrayPlacement;
-       
-        
+
         // test if the length of the word is correct
         if (res.length() != normalWordLength)
         {
             return null;
         }
 
+        // TODO (fix) simplify
         else
-            
-            
-            // If the length is correct, we look if the word is the same as the proposition
+
+            // If the length is correct, we look if the word is the same as the
+            // proposition
             while (resArray[i] == wordArray[j] && i != 5)
             {
                 i++;
                 j++;
             }
-        
-        
-        // If the word is the same, we update the final score, and put the number of try at 0, and return the result
+
+        // If the word is the same, we update the final score, and put the
+        // number of try at 0, and return the result
         if (i == 5)
         {
             this.finalScore = this.finalScore + pointEarned;
@@ -128,9 +140,9 @@ public class Game
             this.numberOfTriesLeft = 0;
             return arrayPlacement;
         }
-        
-        
-        // If the word isn't the same, we look character by character to fill the placement array, and then return it.
+
+        // If the word isn't the same, we look character by character to fill
+        // the placement array, and then return it.
         else
         {
             for (i = 0; i < 5; i++)
@@ -166,7 +178,7 @@ public class Game
             while (this.numberOfTriesLeft > 0)
                 newTry();
         }
-        System.out.println("Bravo vous avez réussi en "+this.wordsAlreadyPlayed+"mots!");
+        System.out.println("Bravo vous avez réussi en " + this.wordsAlreadyPlayed + "mots!");
     }
 
 }

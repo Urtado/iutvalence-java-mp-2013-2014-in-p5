@@ -2,16 +2,16 @@ package fr.iutvalence.java.mp.urtado;
 
 import java.io.*;
 
+// TODO (fix) rewrite comment
 /**
  * Joueur
  * 
- * @urtadob 
+ * @urtadob
  * 
  */
 
 public class Player
 {
-
 
     private String pseudo;
 
@@ -29,7 +29,8 @@ public class Player
     {
         String p = "Joueur 1";
         this.pseudo = p;
-        this.numberPlayer = 1;;
+        this.numberPlayer = 1;
+        ;
     }
 
     /**
@@ -40,7 +41,7 @@ public class Player
     public String getWord()
     {
 
-        InputStreamReader isr=null;
+        InputStreamReader isr = null;
         try
         {
             isr = new InputStreamReader(System.in, "US-ASCII");
@@ -50,15 +51,14 @@ public class Player
             return null;
         }
         BufferedReader br = new BufferedReader(isr);
-        
-        
+
         try
         {
-          return br.readLine();
+            return br.readLine();
         }
         catch (IOException e)
         {
-           return null;
+            return null;
         }
 
         finally
@@ -71,11 +71,9 @@ public class Player
             catch (IOException e)
             {
             }
-       
+
         }
     }
-        
-      
 
     /**
      * showResult show the proposition after the
@@ -85,7 +83,8 @@ public class Player
      */
     public void showWord(Result word)
     {
-        String NewLigne=System.getProperty("line.separator"); 
-        System.out.println("Proposition:"+word.getWord()+NewLigne+"Resultat:"+word.getLettersPlacement()+NewLigne+"Légende : 0 Lettre pas présente, 1 Lettre bien placé, 2 Lettre mal placé");
+        String NewLigne = System.getProperty("line.separator");
+        System.out.println("Proposition:" + word.getWord() + NewLigne + "Resultat:" + word.getLettersPlacement()
+                + NewLigne + "Légende : 0 Lettre pas présente, 1 Lettre bien placé, 2 Lettre mal placé");
     }
 }

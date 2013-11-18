@@ -13,6 +13,9 @@ import java.io.*;
 public class Player
 {
 
+    /**
+     * 
+     */
     private String pseudo;
 
     /**
@@ -84,7 +87,7 @@ public class Player
     public void showWord(Result word)
     {
         String NewLigne = System.getProperty("line.separator");
-        System.out.println("Proposition:" + word.getWord() + NewLigne + "Resultat:" + word.getLettersPlacement()
+        System.out.println("Proposition:" + word.getWord() + NewLigne + "Resultat:" + word.toString()
                 + NewLigne + "Légende : 0 Lettre pas présente, 1 Lettre bien placé, 2 Lettre mal placé");
     }
 }

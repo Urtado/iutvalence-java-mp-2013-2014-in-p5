@@ -14,26 +14,22 @@ public class Game
     /**
      * pointEarned is the number of point a word is worth
      */
-    // TODO (fix) comply with naming conventions
-    private final static int pointEarned = 10;
+    private final static int POINT_EARNED = 10;
 
     /**
-     * winningScore is the score that the player have to reach to win the game
+     * WINNING_SCORE is the score that the player have to reach to win the game
      */
-    // TODO (fix) comply with naming conventions
-    private final static int winningScore = 60;
+    private final static int WINNING_SCORE = 60;
 
     /**
-     * normalWordLength is the length an answer give by the player should be
+     * NORMAL_WORD_LENGTH is the length an answer give by the player should be
      */
-    // TODO (fix) comply with naming conventions
-    private final static int normalWordLength = 6;
+    private final static int NORMAL_WORD_LENGTH = 6;
 
     /**
      * Constants of the number of try.
      */
-    // TODO (fix) comply with naming conventions
-    private final static int numberTryStart = 6;
+    private final static int NUMBER_TRY_START = 6;
 
     /**
      * number of tries left
@@ -55,7 +51,7 @@ public class Game
     /**
      * word that the player have to find
      */
-    private Word word;
+    private String word;
 
     /**
      * the number of words already played
@@ -80,7 +76,7 @@ public class Game
         this.wordsAlreadyPlayed = 0;
         this.playerNumber = 1;
         this.player = player;
-        this.numberOfTriesLeft = numberTryStart;
+        this.numberOfTriesLeft = NUMBER_TRY_START;
     }
 
     /**
@@ -88,7 +84,9 @@ public class Game
      */
     private void newTry()
     {
-        this.player.showWord(compareWord(this.player.getWord(), this.word.sixLettersWord));
+        this.player.showWord(compareWord(this.player.getWord()));
+        /*if (goodWord() == true)
+                this.finalScore = this.finalScore + POINT_EARNED;*/
         this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
 
     }
@@ -103,51 +101,26 @@ public class Game
      * @return null says if the result is correct or not
      */
     // TODO (fix) simplify this method, it is not really readable
-    private Result compareWord(String res, String word)
+    private Result compareWord(String res)
     {
-        int[] placement = new int[5];
-        char[] resArray = res.toLowerCase().toCharArray();
-        char[] wordArray = word.toLowerCase().toCharArray();
+        int[] placement = new int[6];
+        char[] resArray = res.toCharArray();
+        char[] wordArray = this.word.toCharArray();
         int i = 0;
         int j = 0;
         Result arrayPlacement;
 
         // test if the length of the word is correct
-        if (res.length() != normalWordLength)
-        {
+        if (res.length() != NORMAL_WORD_LENGTH)
             return null;
-        }
-
-        // TODO (fix) simplify
-        else
-
-            // If the length is correct, we look if the word is the same as the
-            // proposition
-            while (resArray[i] == wordArray[j] && i != 5)
-            {
-                i++;
-                j++;
-            }
-
-        // If the word is the same, we update the final score, and put the
-        // number of try at 0, and return the result
-        if (i == 5)
-        {
-            this.finalScore = this.finalScore + pointEarned;
-            for (i = 0; i < 5; i++)
-                placement[i] = Result.GOOD_LETTER;
-            arrayPlacement = new Result(res, placement);
-            this.numberOfTriesLeft = 0;
-            return arrayPlacement;
-        }
 
         // If the word isn't the same, we look character by character to fill
         // the placement array, and then return it.
         else
         {
-            for (i = 0; i < 5; i++)
+            for (i = 0; i < NORMAL_WORD_LENGTH; i++)
             {
-                for (j = 0; j < 5; j++)
+                for (j = 0; j < NORMAL_WORD_LENGTH; j++)
                 {
                     if (resArray[j] != wordArray[i])
                         placement[i] = Result.WRONG_LETTER;
@@ -170,13 +143,17 @@ public class Game
     {
         Dictionnary dico = null;
         dico = new Dictionnary();
-        while (this.finalScore != winningScore)
+        while (this.finalScore != WINNING_SCORE)
         {
-            this.word = new Word(dico.getWord());
+            this.word =dico.getWord();
             this.wordsAlreadyPlayed = this.wordsAlreadyPlayed + 1;
-            this.numberOfTriesLeft = numberTryStart;
+            this.numberOfTriesLeft = NUMBER_TRY_START;
             while (this.numberOfTriesLeft > 0)
+            {
+                System.out.println("Saissez votre proposition de mot de six lettres");
+                System.out.println("CHEATCODE :"+ this.word);
                 newTry();
+            }
         }
         System.out.println("Bravo vous avez réussi en " + this.wordsAlreadyPlayed + "mots!");
     }

@@ -65,9 +65,28 @@ public class Result
     {
         return this.lettersPlacement;
     }
+    
+    /**
+     * @return
+     */
+    public Boolean goodWord()
+    {
+        int i = 0;
+        while (this.lettersPlacement[i] == GOOD_LETTER && i < 6)
+            i++;
+        if (i == 5)
+            return true;
+        else 
+            return false;
+    }
 
     public String toString()
     {
-       return "to be completed";
+        int i;
+        String letter = "";
+        for (i = 0; i<6; i++)
+            letter = letter + "" +this.lettersPlacement[i];
+        return letter;
+
     }
 }

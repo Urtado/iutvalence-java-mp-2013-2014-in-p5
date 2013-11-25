@@ -48,7 +48,8 @@ public class Dictionnary
      */
     public String getWord()
     {
-        return this.dictionnary[(int) Math.random() * ((this.numberWord+1)-lowerWord)+lowerWord];
+        int nombreAleatoire =  (int)(Math.random() * ((this.numberWord - lowerWord) + 1));
+        return this.dictionnary[nombreAleatoire];
     }
 
     /**

@@ -2,9 +2,8 @@ package fr.iutvalence.java.mp.urtado;
 
 import java.io.*;
 
-// TODO (fix) rewrite comment
 /**
- * Joueur
+ *  It's the class of player 
  * 
  * @urtadob
  * 

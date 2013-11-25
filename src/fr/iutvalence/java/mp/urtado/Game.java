@@ -4,13 +4,9 @@ package fr.iutvalence.java.mp.urtado;
  * @urtadob The class that show the process of a game
  */
 
-// TODO (fix) this class should only have one public method called "play"
 public class Game
 {
-    // TODO (think about it) you have to distinguish local variables from
-    // fields.
-    // some of the following declarations are much more local variable than part
-    // of game state
+    
     /**
      * pointEarned is the number of point a word is worth
      */
@@ -47,6 +43,9 @@ public class Game
      * number of player in the game (1 or 2)
      */
     private int playerNumber;
+    
+   
+
 
     /**
      * word that the player have to find
@@ -62,6 +61,8 @@ public class Game
      * score at the end of the game
      */
     public int finalScore;
+    
+    
 
     /**
      * Game constructor with the player in parameter
@@ -100,7 +101,6 @@ public class Game
      *            the word the player have to find
      * @return null says if the result is correct or not
      */
-    // TODO (fix) simplify this method, it is not really readable
     private Result compareWord(String res)
     {
         int[] placement = new int[6];
@@ -112,22 +112,38 @@ public class Game
 
         // test if the length of the word is correct
         if (res.length() != NORMAL_WORD_LENGTH)
+        {
             return null;
+        }
 
         // If the word isn't the same, we look character by character to fill
         // the placement array, and then return it.
         else
         {
+            boolean masque[]={true,true,true,true,true,true};
             for (i = 0; i < NORMAL_WORD_LENGTH; i++)
             {
-                for (j = 0; j < NORMAL_WORD_LENGTH; j++)
+                 for (j = 0; j < NORMAL_WORD_LENGTH; j++)
                 {
-                    if (resArray[j] != wordArray[i])
-                        placement[i] = Result.WRONG_LETTER;
-                    if (resArray[j] == wordArray[i] && i == j)
+                    if (resArray[j] == wordArray[i] && i == j && masque[i]== true)
+                    {
                         placement[i] = Result.GOOD_LETTER;
-                    if (resArray[j] == wordArray[i] && i != j)
+                        masque[i] = false;
+                    }   
+                    if (resArray[j] != wordArray[i] && masque[i] == true)
+                    {
+                        placement[i] = Result.WRONG_LETTER;
+                        
+                    }
+                }
+                
+                for (j=0; j< NORMAL_WORD_LENGTH;j++)
+                {
+                    if (resArray[j] == wordArray[i] && i != j && masque[i]== true)
+                    {
                         placement[i] = Result.MISPLACED_LETTER;
+                        masque[i]=false;
+                    }
                 }
             }
 

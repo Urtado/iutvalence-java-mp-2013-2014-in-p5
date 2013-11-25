@@ -86,8 +86,6 @@ public class Game
     private void newTry()
     {
         this.player.showWord(compareWord(this.player.getWord()));
-        /*if (goodWord() == true)
-                this.finalScore = this.finalScore + POINT_EARNED;*/
         this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
 
     }
@@ -108,6 +106,7 @@ public class Game
         char[] wordArray = this.word.toCharArray();
         int i = 0;
         int j = 0;
+        int k = 0;
         Result arrayPlacement;
 
         // test if the length of the word is correct
@@ -125,21 +124,21 @@ public class Game
             {
                  for (j = 0; j < NORMAL_WORD_LENGTH; j++)
                 {
-                    if (resArray[j] == wordArray[i] && i == j && masque[i]== true)
+                    if (resArray[i] == wordArray[j] && i == j && masque[i]== true)
                     {
                         placement[i] = Result.GOOD_LETTER;
                         masque[i] = false;
                     }   
-                    if (resArray[j] != wordArray[i] && masque[i] == true)
+                    if (resArray[i] != wordArray[j] && i!= j && masque[i] == true)
                     {
                         placement[i] = Result.WRONG_LETTER;
-                        
+                        //masque[i] = false;                             
                     }
                 }
                 
                 for (j=0; j< NORMAL_WORD_LENGTH;j++)
                 {
-                    if (resArray[j] == wordArray[i] && i != j && masque[i]== true)
+                    if (resArray[i] == wordArray[j] && i != j && masque[i] == true)
                     {
                         placement[i] = Result.MISPLACED_LETTER;
                         masque[i]=false;
@@ -166,9 +165,20 @@ public class Game
             this.numberOfTriesLeft = NUMBER_TRY_START;
             while (this.numberOfTriesLeft > 0)
             {
+                char[] wordArray = this.word.toCharArray();
                 System.out.println("Saissez votre proposition de mot de six lettres");
                 System.out.println("CHEATCODE :"+ this.word);
-                newTry();
+                String w = this.player.getWord();
+                Result r = compareWord(w);
+                this.player.showWord(r);
+                this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
+                if (r.goodWord() == true)
+                    {
+                    this.finalScore = this.finalScore + POINT_EARNED;
+                    this.numberOfTriesLeft = 0;
+                    }
+                
+                
             }
         }
         System.out.println("Bravo vous avez réussi en " + this.wordsAlreadyPlayed + "mots!");

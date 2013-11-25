@@ -73,9 +73,9 @@ public class Result
     public Boolean goodWord()
     {
         int i = 0;
-        while (this.lettersPlacement[i] == GOOD_LETTER && i < 6)
+        while ( i < 6 && this.lettersPlacement[i]== GOOD_LETTER)
             i++;
-        if (i == 5)
+        if (i == 6)
             return true;
         else 
             return false;

@@ -60,20 +60,8 @@ public class Player
         }
         catch (IOException e)
         {
+            e.printStackTrace();
             return null;
-        }
-
-        finally
-        {
-            try
-            {
-                isr.close();
-                br.close();
-            }
-            catch (IOException e)
-            {
-            }
-
         }
     }
 

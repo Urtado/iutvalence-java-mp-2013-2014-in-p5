@@ -6,7 +6,7 @@ package fr.iutvalence.java.mp.urtado;
 
 public class Game
 {
-    
+
     /**
      * pointEarned is the number of point a word is worth
      */
@@ -43,9 +43,6 @@ public class Game
      * number of player in the game (1 or 2)
      */
     private int playerNumber;
-    
-   
-
 
     /**
      * word that the player have to find
@@ -61,8 +58,6 @@ public class Game
      * score at the end of the game
      */
     public int finalScore;
-    
-    
 
     /**
      * Game constructor with the player in parameter
@@ -119,29 +114,29 @@ public class Game
         // the placement array, and then return it.
         else
         {
-            boolean masque[]={true,true,true,true,true,true};
+            boolean masque[] = { true, true, true, true, true, true };
             for (i = 0; i < NORMAL_WORD_LENGTH; i++)
             {
-                 for (j = 0; j < NORMAL_WORD_LENGTH; j++)
+                for (j = 0; j < NORMAL_WORD_LENGTH; j++)
                 {
-                    if (resArray[i] == wordArray[j] && i == j && masque[i]== true)
+                    if (resArray[i] == wordArray[j] && i == j && masque[i] == true)
                     {
                         placement[i] = Result.GOOD_LETTER;
                         masque[i] = false;
-                    }   
-                    if (resArray[i] != wordArray[j] && i!= j && masque[i] == true)
+                    }
+                    if (resArray[i] != wordArray[j] && i != j && masque[i] == true)
                     {
                         placement[i] = Result.WRONG_LETTER;
-                        //masque[i] = false;                             
+                        // masque[i] = false;
                     }
                 }
-                
-                for (j=0; j< NORMAL_WORD_LENGTH;j++)
+
+                for (j = 0; j < NORMAL_WORD_LENGTH; j++)
                 {
                     if (resArray[i] == wordArray[j] && i != j && masque[i] == true)
                     {
                         placement[i] = Result.MISPLACED_LETTER;
-                        masque[i]=false;
+                        masque[i] = false;
                     }
                 }
             }
@@ -160,25 +155,24 @@ public class Game
         dico = new Dictionnary();
         while (this.finalScore != WINNING_SCORE)
         {
-            this.word =dico.getWord();
+            this.word = dico.getWord();
             this.wordsAlreadyPlayed = this.wordsAlreadyPlayed + 1;
             this.numberOfTriesLeft = NUMBER_TRY_START;
             while (this.numberOfTriesLeft > 0)
             {
                 char[] wordArray = this.word.toCharArray();
                 System.out.println("Saissez votre proposition de mot de six lettres");
-                System.out.println("CHEATCODE :"+ this.word);
+                System.out.println("CHEATCODE :" + this.word);
                 String w = this.player.getWord();
                 Result r = compareWord(w);
                 this.player.showWord(r);
                 this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
                 if (r.goodWord() == true)
-                    {
+                {
                     this.finalScore = this.finalScore + POINT_EARNED;
                     this.numberOfTriesLeft = 0;
-                    }
-                
-                
+                }
+
             }
         }
         System.out.println("Bravo vous avez réussi en " + this.wordsAlreadyPlayed + "mots!");

@@ -11,7 +11,7 @@ import java.io.*;
 
 public class Player
 {
-
+    // TODO (fix) write comment
     /**
      * 
      */
@@ -20,19 +20,21 @@ public class Player
     /**
      * numberPlayer is an integer that shows the number of the player
      */
-
+    // TODO (fix) rename field
     private int numberPlayer;
 
+    
+    // TODO (fix) rewrite comment
     /**
      * Constructor of player
      */
 
     public Player()
     {
+        // TODO (fix) avoid using temp variable
         String p = "Joueur 1";
         this.pseudo = p;
-        this.numberPlayer = 1;
-        ;
+        this.numberPlayer = 1;       
     }
 
     /**
@@ -65,6 +67,8 @@ public class Player
         }
     }
 
+    
+    // TODO (fix) this method should not be declared here
     /**
      * showResult show the proposition after the
      * 

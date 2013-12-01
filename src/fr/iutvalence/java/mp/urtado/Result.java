@@ -66,25 +66,33 @@ public class Result
         return this.lettersPlacement;
     }
     
+    // TODO (fix) write comment
     /**
      * @param result 
      * @return
      */
+    // TODO (fix) use boolean instead of Boolean
     public Boolean goodWord()
     {
         int i = 0;
+        // TODO (fix) declare hard-coded values as constants
         while ( i < 6 && this.lettersPlacement[i]== GOOD_LETTER)
             i++;
+        // TODO (fix) simplify
         if (i == 6)
             return true;
         else 
             return false;
     }
-
+    
+    /**
+     * @see java.lang.Object#toString()
+     */
     public String toString()
     {
         int i;
         String letter = "";
+        // TODO (fix) declare hard-coded values as constants
         for (i = 0; i<6; i++)
             letter = letter + "" +this.lettersPlacement[i];
         return letter;

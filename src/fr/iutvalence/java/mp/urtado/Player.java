@@ -44,28 +44,30 @@ public class Player
      */
     public String getWord()
     {
+      
+            InputStreamReader isr = null;
+            try
+            {
+                isr = new InputStreamReader(System.in, "US-ASCII");
+            }
+            catch (UnsupportedEncodingException e)
+            {
+                return null;
+            }
+            BufferedReader br = new BufferedReader(isr);
 
-        InputStreamReader isr = null;
-        try
-        {
-            isr = new InputStreamReader(System.in, "US-ASCII");
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            return null;
-        }
-        BufferedReader br = new BufferedReader(isr);
-
-        try
-        {
-            return br.readLine();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            return null;
-        }
-    }
+            try
+            {
+                return br.readLine();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+                return null;
+            }
+     }
+        
+   
 
     
     // TODO (fix) this method should not be declared here

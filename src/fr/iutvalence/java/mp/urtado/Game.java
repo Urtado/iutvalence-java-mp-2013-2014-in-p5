@@ -149,7 +149,7 @@ public class Game
             {
                 char[] wordArray = this.word.toCharArray();
                 System.out.println("Saissez votre proposition de mot de six lettres");
-                System.out.println("CHEATCODE :" + this.word);
+                //System.out.println("CHEATCODE :" + this.word);
                 String w = this.player.getWord();
                 if (w.length() != NORMAL_WORD_LENGTH)
                 {

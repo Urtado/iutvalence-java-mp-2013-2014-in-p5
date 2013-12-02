@@ -88,62 +88,49 @@ public class Game
     /**
      * compare the answer with the word to find.
      * 
-     * @param res
+     * @param inputWord
      *            the result of the function getWord
      * @param word
      *            the word the player have to find
      * @return null says if the result is correct or not
      */
-    private Result compareWord(String res)
+    private Result compareWord(String inputWord)
     {
-        int[] placement = new int[6];
-        char[] resArray = res.toCharArray();
+        int[] placement = new int[] {Result.WRONG_LETTER, Result.WRONG_LETTER, Result.WRONG_LETTER, Result.WRONG_LETTER, Result.WRONG_LETTER, Result.WRONG_LETTER};
+        char[] inputArray = inputWord.toCharArray();
         char[] wordArray = this.word.toCharArray();
-        int i = 0;
-        int j = 0;
-        int k = 0;
-        Result arrayPlacement;
-
+        boolean mask[] = { true, true, true, true, true, true };
+        
         // test if the length of the word is correct
-        if (res.length() != NORMAL_WORD_LENGTH)
+
+        
+        
+        for (int letterIndex = 0; letterIndex < NORMAL_WORD_LENGTH; letterIndex++)
         {
-            return null;
+            if ((inputArray[letterIndex] == wordArray[letterIndex]) && mask[letterIndex])
+            {
+                placement[letterIndex] = Result.GOOD_LETTER;
+                mask[letterIndex] = false;
+            }
         }
 
-        // If the word isn't the same, we look character by character to fill
-        // the placement array, and then return it.
-        else
+        for (int inputLetterIndex = 0; inputLetterIndex < NORMAL_WORD_LENGTH; inputLetterIndex++)
         {
-            boolean masque[] = { true, true, true, true, true, true };
-            for (i = 0; i < NORMAL_WORD_LENGTH; i++)
+            for (int wordLetterIndex = 0; wordLetterIndex < NORMAL_WORD_LENGTH; wordLetterIndex++)
             {
-                for (j = 0; j < NORMAL_WORD_LENGTH; j++)
+                if (inputLetterIndex == wordLetterIndex) continue;
+                
+                if ((inputArray[inputLetterIndex] == wordArray[wordLetterIndex]) && mask[wordLetterIndex])
                 {
-                    if (resArray[i] == wordArray[j] && i == j && masque[i] == true)
-                    {
-                        placement[i] = Result.GOOD_LETTER;
-                        masque[i] = false;
-                    }
-                    if (resArray[i] != wordArray[j] && i != j && masque[i] == true)
-                    {
-                        placement[i] = Result.WRONG_LETTER;
-                        // masque[i] = false;
-                    }
-                }
-
-                for (j = 0; j < NORMAL_WORD_LENGTH; j++)
-                {
-                    if (resArray[i] == wordArray[j] && i != j && masque[i] == true)
-                    {
-                        placement[i] = Result.MISPLACED_LETTER;
-                        masque[i] = false;
-                    }
+                    placement[inputLetterIndex] = Result.MISPLACED_LETTER;
+                    mask[wordLetterIndex] = false;
+                    break;
                 }
             }
 
-            arrayPlacement = new Result(res, placement);
-            return arrayPlacement;
         }
+
+        return new Result(inputWord, placement);
     }
 
     /**
@@ -164,6 +151,12 @@ public class Game
                 System.out.println("Saissez votre proposition de mot de six lettres");
                 System.out.println("CHEATCODE :" + this.word);
                 String w = this.player.getWord();
+                if (w.length() != NORMAL_WORD_LENGTH)
+                {
+                    System.out.println("Mauvais nombre de lettre");
+                    this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
+                    continue;
+                }
                 Result r = compareWord(w);
                 this.player.showWord(r);
                 this.numberOfTriesLeft = this.numberOfTriesLeft - 1;

@@ -6,6 +6,10 @@ package fr.iutvalence.java.mp.urtado;
 public class Result
 {
     /**
+     * 
+     */
+    public static final int NORMAL_WORD_LENGTH = 6;
+    /**
      * WRONG_LETTER tells the player if the letter is not in the word
      */
     public static final int WRONG_LETTER = 0;
@@ -66,20 +70,17 @@ public class Result
         return this.lettersPlacement;
     }
     
-    // TODO (fix) write comment
     /**
-     * @param result 
-     * @return
+     * 
+     * @return a boolean which tell if the word proposed is correct or not
      */
-    // TODO (fix) use boolean instead of Boolean
-    public Boolean goodWord()
+    public boolean goodWord()
     {
         int i = 0;
-        // TODO (fix) declare hard-coded values as constants
-        while ( i < 6 && this.lettersPlacement[i]== GOOD_LETTER)
+        while ( i < NORMAL_WORD_LENGTH && this.lettersPlacement[i]== GOOD_LETTER)
             i++;
         // TODO (fix) simplify
-        if (i == 6)
+        if (i == NORMAL_WORD_LENGTH)
             return true;
         else 
             return false;
@@ -92,8 +93,7 @@ public class Result
     {
         int i;
         String letter = "";
-        // TODO (fix) declare hard-coded values as constants
-        for (i = 0; i<6; i++)
+        for (i = 0; i < NORMAL_WORD_LENGTH; i++)
             letter = letter + "" +this.lettersPlacement[i];
         return letter;
 

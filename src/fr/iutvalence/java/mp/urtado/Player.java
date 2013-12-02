@@ -79,6 +79,6 @@ public class Player
     {
         String NewLigne = System.getProperty("line.separator");
         System.out.println("Proposition:" + word.getWord() + NewLigne + "Resultat:" + word.toString()
-                + NewLigne + "Légende : 0 Lettre pas présente, 1 Lettre bien placé, 2 Lettre mal placé");
+                + NewLigne + "Légende : 0 = Lettre pas présente, 1 = Lettre bien placé, 2 = Lettre mal placé");
     }
 }

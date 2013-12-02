@@ -55,7 +55,7 @@ public class Dictionnary
     public Dictionnary()
     {
         // TODO (fix) why not 42?
-        this.numberWord = 67;
+        this.numberWord = 60;
     }
 
 }

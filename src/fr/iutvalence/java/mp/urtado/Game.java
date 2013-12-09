@@ -28,6 +28,15 @@ public class Game
     private final static int NUMBER_TRY_START = 6;
 
     /**
+     * Number of word the player have at the start of the game
+     */
+    private final static int NUMBER_WORD_START = 10;
+    
+    /**
+     * number of word the player have before he loose
+     */
+    private int numberOfWord;
+    /**
      * number of tries left
      */
     private int numberOfTriesLeft;
@@ -70,20 +79,12 @@ public class Game
     {
         this.finalScore = 0;
         this.wordsAlreadyPlayed = 0;
+        this.numberOfWord = NUMBER_WORD_START;
         this.playerNumber = 1;
         this.player = player;
         this.numberOfTriesLeft = NUMBER_TRY_START;
     }
 
-    /**
-     * Start a new try and if the value of try is above 6 then start a new word
-     */
-    private void newTry()
-    {
-        this.player.showWord(compareWord(this.player.getWord()));
-        this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
-
-    }
 
     /**
      * compare the answer with the word to find.
@@ -138,37 +139,44 @@ public class Game
      */
     public void play()
     {
+        SystemOutput output = null;
+        output = new SystemOutput();
         Dictionnary dico = null;
         dico = new Dictionnary();
+        output.newGameStatement();
         while (this.finalScore != WINNING_SCORE)
         {
             this.word = dico.getWord();
+            output.getNewWord(this.numberOfWord);
+            this.numberOfWord = this.numberOfWord -1;
             this.wordsAlreadyPlayed = this.wordsAlreadyPlayed + 1;
             this.numberOfTriesLeft = NUMBER_TRY_START;
             while (this.numberOfTriesLeft > 0)
             {
                 char[] wordArray = this.word.toCharArray();
-                System.out.println("Saissez votre proposition de mot de six lettres");
-                //System.out.println("CHEATCODE :" + this.word);
+                //output.cheatcode(this.word);
+                output.enterProposition();
                 String w = this.player.getWord();
                 if (w.length() != NORMAL_WORD_LENGTH)
                 {
-                    System.out.println("Mauvais nombre de lettre");
+                    output.wrongSize();
                     this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
                     continue;
                 }
                 Result r = compareWord(w);
-                this.player.showWord(r);
+                output.showWord(r);
                 this.numberOfTriesLeft = this.numberOfTriesLeft - 1;
                 if (r.goodWord() == true)
                 {
                     this.finalScore = this.finalScore + POINT_EARNED;
                     this.numberOfTriesLeft = 0;
+                    output.wordFind();
                 }
 
             }
+            output.wordNotFind();
         }
-        System.out.println("Bravo vous avez réussi en " + this.wordsAlreadyPlayed + "mots!");
+        output.endGame(this.wordsAlreadyPlayed);
     }
 
 }

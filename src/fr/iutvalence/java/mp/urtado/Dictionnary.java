@@ -12,20 +12,15 @@ public class Dictionnary
      * is the first word in the array
      */
     // TODO (fix) comply with naming conventions
-    private final static int lowerWord = 0;
+    private final static int LOWER_WORD = 0;
     
     /**
      * 
      * dictionnary is an array where all the sixLetterWord are stocked
      */
     // TODO (fix) this field should be private and initialized in constructor
-    public String dictionnary[]={"decors","glaces","vision","auteur","taille","lignes","nouees","lucide","peines","couter","accent","vaches","trente","sainte","poutre","police","saumon","minois","etroit","minees","joules","gaffes","equipe","eviter","prison","etoile","hockey","repris","migale","aimant","pierre","ardeur","alcool","nombre","confus","auteur","postes","repris","eclair","organe","ouvert","tester","pentes","tentes","traite","cartes","doutes","pistes","piston","carton","routes","calcul","tartes","mordue","cousin","freres","plaire","traces","courte","ecoles","dettes","crimes","vagues","cycles","tables","suites"};
+      public String dictionnary[];
 
-    /**
-     * numberWord is the counter of the number of word in the dictionnary
-     */
-    // TODO (fix) this field should be private
-    public int numberWord;
 
     /**
      * Possibility of adding a word
@@ -35,27 +30,29 @@ public class Dictionnary
      */
     public void addWord(String word)
     {
-        this.dictionnary[this.numberWord] = word;
-        this.numberWord = this.numberWord + 1;
+        this.dictionnary[this.dictionnary.length+1] = word;
+ 
     }
     
-    // TODO (fix) finish writing comment
     /**
-     * @return a word.
+     * @return a word pick randomly.
      */
     public String getWord()
     {
-        int nombreAleatoire =  (int)(Math.random() * ((this.numberWord - lowerWord) + 1));
+        int nombreAleatoire =  (int)(Math.random() * ((this.dictionnary.length - LOWER_WORD) ));
         return this.dictionnary[nombreAleatoire];
     }
 
     /**
-     * 
+     * This is the number of 
      */
     public Dictionnary()
     {
-        // TODO (fix) why not 42?
-        this.numberWord = 60;
+        {
+            String temp[] = {"decors","glaces","vision","auteur","taille","lignes","nouees","lucide","peines","couter","accent","vaches","trente","sainte","poutre","police","saumon","minois","etroit","minees","joules","gaffes","equipe","eviter","prison","etoile","hockey","repris","migale","aimant","pierre","ardeur","alcool","nombre","confus","auteur","postes","repris","eclair","organe","ouvert","tester","pentes","tentes","traite","cartes","doutes","pistes","piston","carton","routes","calcul","tartes","mordue","cousin","freres","plaire","traces","courte","ecoles","dettes","crimes","vagues","cycles","tables","suites"};
+            this.dictionnary = temp;
+        }
     }
 
+    
 }

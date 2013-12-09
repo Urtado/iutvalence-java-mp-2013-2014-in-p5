@@ -82,8 +82,8 @@ public class Result
         // TODO (fix) simplify
         if (i == NORMAL_WORD_LENGTH)
             return true;
-        else 
-            return false;
+        
+        return false;
     }
     
     /**

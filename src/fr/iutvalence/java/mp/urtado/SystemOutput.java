@@ -26,7 +26,7 @@ public class SystemOutput
     }
     
     /**
-     * Says to the player he have succesfully find the word
+     * Says to the player he have successfully find the word
      */
     public void wordFind()
     {

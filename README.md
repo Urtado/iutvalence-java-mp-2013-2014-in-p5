@@ -23,3 +23,11 @@ Le joueur a 2 minutes pour trouver 6 mots
 Les mêmes règles que pour le classique s'applique dans se mode de jeu, il peut avoir plus de 6 mots a deviner,
 Si il en trouve un, son compteur de mots a deviné se décrémente, et un nouveau mot lui est tiré aléatoirement,
 Si il ne trouve pas le mot, le compteur de mots ne se décrémente pas, et un nouveau mot lui est tiré.
+
+
+
+
+Notre application peut lancer un partie de motus 1 joueurs, le joueurs a 10 mot/essai pour en trouver correctement 6,
+il a 6 essai par mots.
+Si le joueurs les trouve il gagne, sinon il perd.
+Tout les affichages on été délocalisé dans une classe qui les gère tous.
